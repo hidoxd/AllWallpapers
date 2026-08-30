@@ -35,8 +35,8 @@ static NSString *const AWProvider = @"com.apple.WallpaperKit.CollectionsPoster";
         if (outError) *outError = [NSError errorWithDomain:@"AllWallpapers" code:1 userInfo:@{NSLocalizedDescriptionKey: err ?: @"Could not access PosterBoard"}];
         return nil;
     }
-    NSFileManager *fm = [NSFileManager defaultManager];
     NSString *base = lease.rootPath;
+    NSFileManager *fm = [NSFileManager defaultManager];
     NSArray *versions = @[@"61", @"60", @"62", @"59"];
     for (NSString *v in versions) {
         NSString *p = [[[[base stringByAppendingPathComponent:@"Library"] stringByAppendingPathComponent:@"Application Support"]
