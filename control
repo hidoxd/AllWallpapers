@@ -1,0 +1,9 @@
+Package: com.example.allwallpapers
+Name: AllWallpapers
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: Read-only PosterBoard descriptor browser for iOS 18.5. Shows all CollectionsPoster descriptors without modifying PosterBoard.
+Maintainer: local
+Author: local
+Section: Tweaks
+Version: 0.1.0
