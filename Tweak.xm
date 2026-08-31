@@ -16,8 +16,14 @@
 %hook WKWallpaperCollection
 
 - (NSUInteger)numberOfItems {
-    NSArray *wallpapers = [self respondsToSelector:@selector(wallpapers)] ? [self wallpapers] : nil;
-    return wallpapers ? wallpapers.count : %orig;
+    id selfObj = (id)self;
+    if ([selfObj respondsToSelector:@selector(wallpapers)]) {
+        NSArray *wallpapers = [selfObj wallpapers];
+        if (wallpapers) {
+            return wallpapers.count;
+        }
+    }
+    return %orig;
 }
 
 %end
