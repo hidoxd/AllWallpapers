@@ -17,9 +17,14 @@
 
 - (NSUInteger)numberOfItems {
     id selfObj = (id)self;
-    if ([selfObj respondsToSelector:@selector(wallpapers)]) {
-        NSArray *wallpapers = [selfObj wallpapers];
-        if (wallpapers) {
+    SEL wallpapersSelector = NSSelectorFromString(@"wallpapers");
+    
+    if ([selfObj respondsToSelector:wallpapersSelector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        NSArray *wallpapers = [selfObj performSelector:wallpapersSelector];
+#pragma clang diagnostic pop
+        if (wallpapers && [wallpapers isKindOfClass:[NSArray class]]) {
             return wallpapers.count;
         }
     }
