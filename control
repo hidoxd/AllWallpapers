@@ -1,9 +1,9 @@
-Package: com.example.allwallpapers
+Package: com.hidoxd.allwallpapers
 Name: AllWallpapers
 Depends: mobilesubstrate
 Architecture: iphoneos-arm
-Description: Read-only PosterBoard descriptor browser for iOS 18.5. Shows all CollectionsPoster descriptors without modifying PosterBoard.
-Maintainer: local
-Author: local
+Description: Unlock all wallpaper collection limits in PosterBoard for iOS 18.
+Maintainer: hidoxd
+Author: hidoxd
 Section: Tweaks
-Version: 0.1.0
+Version: 0.2.0
