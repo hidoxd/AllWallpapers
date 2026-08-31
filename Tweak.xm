@@ -1,34 +1,28 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-%hook PBRPosterGalleryCollection
+// 1. Снимаем лимит количества элементов в секциях PosterBoard (iOS 16/17/18)
+%hook PBFPosterGalleryCollection
 
-- (NSArray *)descriptors {
-    return %orig;
+- (NSInteger)maximumNumberOfItems {
+    return 999;
 }
 
-- (NSArray *)items {
-    return %orig;
+- (NSInteger)maxNumberOfItems {
+    return 999;
 }
 
 %end
 
-%hook WKWallpaperCollection
+// 2. Резервный хук для PBR-классов коллекции
+%hook PBRPosterGalleryCollection
 
-- (NSUInteger)numberOfItems {
-    id selfObj = (id)self;
-    SEL wallpapersSelector = NSSelectorFromString(@"wallpapers");
-    
-    if ([selfObj respondsToSelector:wallpapersSelector]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        NSArray *wallpapers = [selfObj performSelector:wallpapersSelector];
-#pragma clang diagnostic pop
-        if (wallpapers && [wallpapers isKindOfClass:[NSArray class]]) {
-            return wallpapers.count;
-        }
-    }
-    return %orig;
+- (NSInteger)maximumNumberOfItems {
+    return 999;
+}
+
+- (NSInteger)maxNumberOfItems {
+    return 999;
 }
 
 %end
